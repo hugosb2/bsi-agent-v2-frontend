@@ -190,7 +190,7 @@ export default function App() {
           </View>
 
           <KeyboardAvoidingView
-            behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+            behavior={Platform.OS === 'ios' ? 'padding' : 'padding'}
             style={styles.container}
             keyboardVerticalOffset={Platform.OS === 'ios' ? 90 : 0}
           >
