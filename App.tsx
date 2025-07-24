@@ -13,13 +13,10 @@ import {
   KeyboardAvoidingView,
   Keyboard,
   useColorScheme,
-  Switch,
   useWindowDimensions,
-  Image,
-  Alert
+  Image
 } from 'react-native';
 import Svg, { Path } from 'react-native-svg';
-import { MaterialIcons } from '@expo/vector-icons';
 import Markdown from 'react-native-markdown-display';
 
 const BACKEND_URL = 'https://bsi-agent-v2-backend.onrender.com/ask';
@@ -77,7 +74,8 @@ export default function App() {
   const { width } = useWindowDimensions();
   const isDesktop = width > 768;
 
-  const [theme, setTheme] = useState(systemTheme || 'light');
+  // O tema agora é definido diretamente pelo sistema, com 'light' como padrão
+  const theme = systemTheme || 'light'; 
   const colors = useMemo(() => (theme === 'light' ? lightColors : darkColors), [theme]);
   const styles = useMemo(() => createStyles(colors, isDesktop), [colors, isDesktop]);
 
@@ -85,10 +83,6 @@ export default function App() {
   const [inputText, setInputText] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const flatListRef = useRef<FlatList>(null);
-
-  const toggleTheme = () => {
-    setTheme(prevTheme => prevTheme === 'light' ? 'dark' : 'light');
-  };
 
   const handleSendMessage = async () => {
     const trimmedText = inputText.trim();
@@ -177,16 +171,7 @@ export default function App() {
                 <Text style={styles.headerSubtitle}>Assistente do BSI - IF Baiano</Text>
               </View>
             </View>
-            <View style={styles.themeToggle}>
-              <MaterialIcons name="brightness-5" size={24} color={colors.textHint} />
-              <Switch
-                trackColor={{ false: "#767577", true: "#81b0ff" }}
-                thumbColor={theme === 'dark' ? colors.primary : "#f4f3f4"}
-                onValueChange={toggleTheme}
-                value={theme === 'dark'}
-              />
-              <MaterialIcons name="brightness-2" size={24} color={colors.textHint} />
-            </View>
+            {/* O seletor de tema manual foi removido daqui */}
           </View>
 
           <KeyboardAvoidingView
@@ -270,10 +255,6 @@ const createStyles = (colors: ColorScheme, isDesktop: boolean) => StyleSheet.cre
     height: 44,
     borderRadius: 22,
     marginRight: 12,
-  },
-  themeToggle: {
-    flexDirection: 'row',
-    alignItems: 'center',
   },
   headerTitle: { fontSize: 20, fontWeight: '600', color: colors.textPrimary },
   headerSubtitle: { fontSize: 14, color: colors.textHint },
