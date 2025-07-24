@@ -1,14 +1,13 @@
 {
   "expo": {
-    "name": "frontend",
-    "slug": "frontend",
+    "name": "Lívia AI",
+    "slug": "livia-ai-frontend",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/perfil.png",
     "userInterfaceStyle": "light",
-    "newArchEnabled": true,
     "splash": {
-      "image": "./assets/splash-icon.png",
+      "image": "./assets/perfil.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
@@ -17,13 +16,22 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
+        "foregroundImage": "./assets/perfil.png",
         "backgroundColor": "#ffffff"
       },
-      "edgeToEdgeEnabled": true
+      "package": "com.hugobarros.liviaaifrontend",
+      "permissions": [
+        "android.permission.INTERNET"
+      ],
+      "networkSecurityConfig": "./res/xml/network_security_config.xml"
     },
     "web": {
-      "favicon": "./assets/favicon.png"
+      "favicon": "./assets/perfil.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "48ebedba-1198-4b62-adc2-ece2e4f866e7"
+      }
     }
   }
 }
